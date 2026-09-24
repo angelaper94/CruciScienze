@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="it"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Sette cruciverba per esplorare e ripassare le Scienze della Terra."><meta name="theme-color" content="#103e48"><title>CruciScienze v9 — Griglia interattiva</title><style>:root{font-family:Arial,Helvetica,sans-serif;color:#173e48;background:#f4f7f8;font-size:16px;--ink:#103e48;--teal:#0c6a70;--line:#d7e1e4;--muted:#526d74;--gold:#e6c65c}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button{min-height:46px;border:0;border-radius:8px;padding:12px 18px;color:var(--ink);background:#e8eef0;font-weight:600}button:hover{filter:brightness(.96)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bc8c16;outline-offset:3px}a{color:inherit}header{height:88px;border-bottom:1px solid var(--line);padding:0 5%;display:flex;align-items:center;gap:24px;background:#fff}.brand{text-decoration:none;display:flex;align-items:center;gap:12px;font-size:23px;font-weight:700;letter-spacing:-.8px}.brand-mark{width:38px;height:38px;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:25px;position:relative;border-radius:4px}.brand-mark span{position:absolute;right:-5px;bottom:-7px;background:white;font-size:20px}.header-note{font-size:12px;letter-spacing:2px;color:var(--muted);margin-left:18px}header>button{margin-left:auto}.quiet{background:transparent;border:1px solid var(--line)}main{max-width:1400px;margin:auto;padding:48px 5% 32px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;display:block;color:var(--teal);margin-bottom:18px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(38px,5vw,68px);line-height:1.06;letter-spacing:-2px;font-weight:600}h2{font-size:30px;letter-spacing:-.8px}h3{font-size:21px;line-height:1.25}p{line-height:1.6;color:var(--muted)}.primary{background:var(--ink);color:white}.home{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:60px;min-height:65vh}.home p{max-width:440px;font-size:18px}.home .primary{margin-top:18px;padding:18px 28px}.home-meta{display:flex;gap:28px;margin-top:45px;font-size:14px;color:var(--muted)}.home-meta strong{display:block;color:var(--ink);font-size:22px;margin-bottom:5px}.specimen{background:var(--ink);color:white;padding:38px;border-radius:16px;transform:rotate(2deg);box-shadow:0 20px 45px #143b4917}.specimen .eyebrow{color:#afcfd3}.demo-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:5px;margin:30px 0}.demo-grid span{aspect-ratio:1;display:grid;place-items:center;background:#ffffff12;border-radius:3px;font-size:clamp(15px,2.5vw,27px)}.demo-grid .letter{background:#f5f8f6;color:var(--ink);font-weight:600}.demo-grid .accent{background:var(--gold)}.specimen footer{font-size:14px;color:#c0d9dd;border-top:1px solid #ffffff35;padding-top:20px;display:flex;justify-content:space-between}.bottom-note{margin-top:45px;font-size:14px;color:var(--muted)}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:32px}.section-head h1{font-size:42px;margin-bottom:10px}.section-head p{margin:0}.count{white-space:nowrap;font-size:14px;border:1px solid var(--line);padding:10px 16px;border-radius:30px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{text-align:left;background:white;border:1px solid var(--line);padding:26px;min-height:204px;display:flex;flex-direction:column;border-radius:12px;transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px #183d4710}.card-top{display:flex;justify-content:space-between;font-size:12px;letter-spacing:1px;color:var(--muted);margin-bottom:30px}.card h3{margin-bottom:24px}.card-bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:400;color:var(--muted)}.card-arrow{color:var(--teal);font-size:21px}.game-head{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:25px}.game-head h1{font-size:32px;letter-spacing:-1px;margin:12px 0}.game-head .eyebrow{margin:0}.game-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,1fr);gap:28px;align-items:start}.board-panel{background:#e5edef;border-radius:12px;border:1px solid var(--line);padding:20px;min-width:0}.board-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:8px;font-size:14px;color:var(--muted)}.board-toolbar button{padding:8px 12px}.board-scroll{overflow:auto;max-height:65vh;padding:3px}.board{display:grid;gap:1px;margin:auto;width:100%;background:#d6e2e5;border:1px solid #d6e2e5}.cell{position:relative;padding:0;min-height:0;aspect-ratio:1;border-radius:0;background:white;font-size:clamp(10px,1.7vw,21px);font-weight:500;display:flex;align-items:center;justify-content:center}.cell small{position:absolute;top:1px;left:2px;font-size:clamp(7px,.65vw,10px);font-weight:400;line-height:1}.blank{aspect-ratio:1;background:#d6e2e5}.cell.active{background:#d0edef}.cell.cursor{background:var(--gold)}.cell.wrong{box-shadow:inset 0 0 0 2px #b64a48;color:#9c302e}.board-note{font-size:13px;margin:15px 0 0}.entry-box{background:white;border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:20px}.entry-meta{font-size:12px;letter-spacing:1px;color:var(--teal);font-weight:700}.entry-box h2{font-size:20px;line-height:1.45;letter-spacing:0;margin:14px 0 18px}.entry-box label{font-size:14px;display:block;margin-bottom:8px}.entry-row{display:flex;gap:8px}.entry-row input{min-width:0;width:100%;padding:13px 10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #9eb5bc;border-radius:7px;font-size:18px}.entry-nav{display:flex;justify-content:space-between;margin-top:16px;gap:10px}.entry-nav button{font-size:14px}.feedback{min-height:24px;font-size:14px;margin:16px 0 0}.clues{max-height:45vh;overflow:auto}.clues h3{font-size:14px;letter-spacing:1px;margin:20px 0 12px}.clue{display:flex;align-items:start;gap:10px;text-align:left;width:100%;font-weight:400;font-size:15px;line-height:1.5;background:transparent;border-radius:7px;padding:12px 8px;border-bottom:1px solid var(--line)}.clue.selected{background:#dcecef}.clue b{color:var(--teal);min-width:22px}.progress{height:5px;background:#d5e2e5;border-radius:5px;margin:12px 0}.progress span{display:block;height:100%;background:var(--teal);border-radius:5px}.progress-label{font-size:14px;color:var(--muted)}dialog{border:1px solid var(--line);border-radius:16px;padding:32px;width:460px;max-width:calc(100% - 32px);color:var(--ink)}dialog::backdrop{background:#062b3d80;backdrop-filter:blur(3px)}dialog h2{margin-bottom:14px}dialog label{display:block;margin:24px 0 8px;font-size:14px}dialog input{width:100%;padding:14px;border:1px solid #a5b9bf;border-radius:7px}.error{color:#a13636;min-height:24px;font-size:14px;margin:10px 0}.actions{display:flex;justify-content:flex-end;gap:10px}.completion{max-width:680px;margin:35px auto;text-align:center;background:white;border:1px solid var(--line);padding:48px;border-radius:16px}.completion h1{font-size:44px}.seal{width:76px;height:76px;margin:0 auto 28px;background:#ddf1e9;color:#176b4f;border-radius:50%;display:grid;place-items:center;font-size:38px}.map-placeholder{border:1px dashed #a7bec5;padding:25px;margin:30px 0;border-radius:10px}.map-placeholder p{margin:8px 0 0;font-size:14px}.completion .actions{justify-content:center;flex-wrap:wrap}.completion img{max-width:100%}@media(max-width:1050px){.header-note{display:none}.home{gap:30px}.cards{grid-template-columns:repeat(2,1fr)}.game-layout{grid-template-columns:minmax(0,1fr) 330px;gap:18px}main{padding:30px 4%}.board-panel{padding:12px}}@media(max-width:850px) and (orientation:portrait){.game-layout{grid-template-columns:1fr}.board-scroll{max-height:52vh}.board{max-width:630px}.cell{font-size:18px}.clues{max-height:35vh}.entry-box{margin-top:0}.board-panel{padding:18px}.game-layout{gap:20px}}@media(max-width:650px){header{height:72px;padding:0 5%;gap:8px}.brand{font-size:20px}header>button{font-size:14px;padding:8px 10px}.home{grid-template-columns:1fr;gap:35px}.home h1{font-size:46px}.specimen{max-width:430px;transform:none}.cards{grid-template-columns:1fr}.section-head{align-items:start}.section-head h1{font-size:34px}.count{display:none}.game-layout{grid-template-columns:1fr}.cell{font-size:15px}.game-head{align-items:start}.game-head h1{font-size:26px}.completion{padding:30px 20px}.completion h1{font-size:36px}.header-note{display:none}.board-scroll{max-height:55vh}.home-meta{margin-top:28px}.section-head{margin-top:18px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Griglia intera: il pannello si apre solo selezionando una casella. */
+body.playing{height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+body.playing>header{height:64px;min-height:64px;padding:0 3%}
+main.game-screen{width:100%;max-width:none;margin:0;flex:1;min-height:0;padding:14px 3% 18px;display:flex;flex-direction:column}
+.game-screen .game-head{flex-shrink:0;margin:0 0 10px;gap:12px;align-items:center}
+.game-screen .game-head h1{font-size:26px;margin:5px 0 0}
+.game-screen .eyebrow{font-size:11px;letter-spacing:1.4px}
+.game-status{display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:14px;color:var(--muted);flex-shrink:0}
+.game-status .progress-label{white-space:nowrap}
+.game-screen>.progress{flex-shrink:0;margin:9px 0 12px}
+.play-workspace{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.play-workspace.editing{grid-template-columns:minmax(0,1fr) minmax(300px,350px)}
+#board-stage{min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#e5edef;border-radius:10px}
+.game-screen .board{flex:none;max-width:none;margin:0}
+.game-screen .cell,.game-screen .blank{aspect-ratio:auto;min-width:0;min-height:0}
+.game-screen .cell{font-size:var(--cell-font);line-height:1}
+.game-screen .cell small{font-size:var(--number-font);top:1px;left:1px}
+.game-screen .cell:focus-visible{outline-offset:-2px;z-index:1}
+.word-panel{min-height:0;overflow:auto;align-self:center;max-height:100%;padding:20px;background:white;border:1px solid var(--line);border-radius:12px}
+.word-panel[hidden]{display:none}
+.word-panel-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.word-panel-top button{font-size:14px;padding:8px 12px}
+.word-panel h2{font-size:18px;line-height:1.45;letter-spacing:0;margin:14px 0}
+.word-panel label{display:block;font-size:14px;margin-bottom:8px}
+.word-panel .feedback{margin-top:10px;font-size:14px;min-height:20px}
+.word-panel .entry-nav{margin-top:10px;gap:8px}
+.word-panel .entry-nav button{padding:10px;font-size:14px}
+.direction-options{display:flex;gap:8px;margin-top:8px}
+.direction-options:empty{display:none}
+.direction-options button{font-size:14px;padding:8px;flex:1}
+.direction-options [aria-pressed=true]{background:#d0edef;border-color:var(--teal)}
+@media(orientation:portrait),(max-width:700px){
+ .play-workspace.editing{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:12px}
+ .word-panel{width:100%;max-height:45dvh;align-self:stretch;padding:12px 16px}
+ .word-panel h2{margin:8px 0;font-size:16px}
+ .word-panel .entry-nav{margin-top:6px}
+ .word-panel .feedback{margin:6px 0 0;min-height:0}
+ .word-panel .feedback:empty{display:none}
+ .game-status{font-size:12px}
+ .game-status .progress-label{font-size:12px}
+}
+@media(max-height:560px){
+ body.playing>header{height:48px;min-height:48px}
+ main.game-screen{padding:8px 2%}
+ .game-screen .game-head h1{font-size:20px}
+ .game-screen .game-head{margin-bottom:4px}
+ .game-screen .eyebrow{display:none}
+ .game-screen>.progress{margin:5px 0 7px}
+ .word-panel{padding:12px}
+}
+
+/* Conferma della parola: effetto progressivo senza spostare la griglia. */
+.game-screen .cell.correct{background:#dbf2e6;color:#165b3b}
+.game-screen .cell.correct.active{background:#bce6d0}
+.game-screen .cell.correct.cursor{box-shadow:inset 0 0 0 2px #0c6a70}
+.game-screen .cell.celebrating{animation:correct-glow 620ms ease-in-out var(--success-delay) both}
+.game-screen .cell.celebrating>span{display:inline-block;animation:correct-letter 620ms cubic-bezier(.22,.61,.36,1) var(--success-delay) both;transform-origin:center}
+@keyframes correct-letter{0%{transform:scale(.7);opacity:.4}48%{transform:scale(1.3);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes correct-glow{0%{background:#dbf2e6}48%{background:#7bd3a4;box-shadow:inset 0 0 0 2px #218456}100%{background:#dbf2e6}}
+@media(prefers-reduced-motion:reduce){
+ .game-screen .cell.celebrating,.game-screen .cell.celebrating>span{animation:none;transform:none}
+ .game-screen .cell.celebrating{background:#bce6d0;box-shadow:inset 0 0 0 2px #218456}
+}
+
+/* Versione 6: impaginazione v3, lettere proporzionate alle caselle. */
+.game-screen .cell>span{font-size:inherit;line-height:1;min-width:0}
+
+
+
+/* Mappe concettuali: anteprima e visualizzatore touch. */
+.map-preview{display:block;width:100%;padding:8px;background:transparent;border:1px solid var(--line)}
+.map-preview img{display:block;width:auto;max-width:100%;max-height:420px;margin:auto}
+.map-preview span{display:block;padding:12px 4px 4px;font-size:14px;color:var(--teal)}
+dialog.map-viewer{position:fixed;inset:0;margin:0;width:100vw;max-width:none;height:100vh;height:100dvh;max-height:none;padding:16px;border:0;border-radius:0;background:#f4f7f8;color:var(--ink);overflow:hidden}
+dialog.map-viewer[open]{display:flex;flex-direction:column;gap:10px}
+.map-viewer-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0}
+.map-viewer-head h2{font-size:20px;letter-spacing:0;margin:0}
+.map-viewer-head button{flex-shrink:0}
+.map-controls{display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0}
+.map-controls output{font-size:14px;min-width:50px;text-align:center}
+.map-controls button:disabled{opacity:.45;cursor:default}
+.map-instructions{font-size:14px;text-align:center;margin:0;flex-shrink:0}
+.map-stage{flex:1;min-width:0;min-height:0;overflow:hidden;position:relative;touch-action:none;user-select:none;overscroll-behavior:contain;background:white;border:1px solid var(--line);border-radius:8px;cursor:grab}
+.map-stage:active{cursor:grabbing}
+.map-stage img{position:absolute;top:0;left:0;max-width:none;max-height:none;transform-origin:0 0;visibility:hidden;pointer-events:none;-webkit-user-drag:none}
+.map-load{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;margin:0}
+.map-load[hidden]{display:none}
+@media(max-width:600px){dialog.map-viewer{padding:10px}.map-viewer-head h2{font-size:16px}.map-instructions{font-size:13px}.map-controls{gap:8px}}
+</style></head>
+<body><header><a class="brand" href="#" id="home-link"><span class="brand-mark" aria-hidden="true">C<span>+</span></span>CruciScienze</a><span class="header-note">VERSIONE 9 · INTERATTIVA</span><button id="levels-link" class="quiet">I moduli <span aria-hidden="true">↗</span></button></header>
+<main id="app"></main>
+<dialog id="password-dialog"><form id="password-form"><span class="eyebrow">ACCESSO AL MODULO</span><h2 id="password-title"></h2><p>Inserisci la password fornita dall’insegnante.</p><label for="password">Password del livello</label><input id="password" type="password" autocomplete="off" required aria-describedby="password-error"><p id="password-error" class="error" role="alert"></p><div class="actions"><button type="button" class="quiet" id="cancel-password">Annulla</button><button class="primary" type="submit">Entra nel livello →</button></div></form></dialog>
+<script>// Modifica titoli, password, parole e definizioni qui.
+window.MODULI = [
+  {
+    "id": "terra1",
+    "title": "Universo",
+    "password": "terra1",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Cosmologia",
+        "clue": "Scienza che studia origine, struttura ed evoluzione dell’Universo."
+      },
+      {
+        "answer": "Big Bang",
+        "clue": "Modello secondo cui l’Universo ebbe origine da uno stato iniziale estremamente caldo e denso."
+      },
+      {
+        "answer": "Protostella",
+        "clue": "Corpo celeste in formazione nato dal collasso di una nube di gas e polveri."
+      },
+      {
+        "answer": "Fusione",
+        "clue": "Reazione termonucleare che libera energia nelle stelle."
+      },
+      {
+        "answer": "Gigante rossa",
+        "clue": "Fase dell’evoluzione di una stella in cui l’Elio viene convertito in carbonio."
+      },
+      {
+        "answer": "Buco nero",
+        "clue": "Il destino di una stella con massa 50 volte maggiore di quella del Sole."
+      },
+      {
+        "answer": "Costellazione",
+        "clue": "Raggruppamento apparente di stelle che, visto dalla Terra, forma una figura riconoscibile."
+      },
+      {
+        "answer": "Via Lattea",
+        "clue": "Galassia a spirale barrata alla quale appartiene il Sistema Solare."
+      },
+      {
+        "answer": "Nana bruna",
+        "clue": "Il destino di una stella mancata."
+      },
+      {
+        "answer": "Elio",
+        "clue": "Elemento chimico prodotto in grande quantità dalla fusione dell’idrogeno nelle stelle."
+      },
+      {
+        "answer": "Eclittica",
+        "clue": "Traiettoria apparente percorsa dal Sole sulla sfera celeste durante l’anno."
+      },
+      {
+        "answer": "Polaris",
+        "clue": "Stella che attualmente indica il polo nord celeste."
+      },
+      {
+        "answer": "Hubble",
+        "clue": "Astronomo che fornì importanti prove dell’espansione dell’Universo osservando galassie lontane."
+      },
+      {
+        "answer": "Diagramma HR",
+        "clue": "Grafico che mette in relazione luminosità e temperatura superficiale delle stelle."
+      },
+      {
+        "answer": "Anno luce",
+        "clue": "Distanza percorsa dalla luce in un anno."
+      },
+      {
+        "answer": "Unità astronomica",
+        "clue": "Distanza media tra la Terra e il Sole, usata come unità nel Sistema Solare."
+      },
+      {
+        "answer": "Magnitudine",
+        "clue": "Scala usata per esprimere la luminosità di una stella."
+      },
+      {
+        "answer": "Rosso",
+        "clue": "Il colore delle stelle più fredde."
+      },
+      {
+        "answer": "Nana bianca",
+        "clue": "Il destino del nostro Sole."
+      },
+      {
+        "answer": "Andromeda",
+        "clue": "Grande galassia che potrebbe collidere con la nostra Galassia"
+      },
+      {
+        "answer": "Nebulosa",
+        "clue": "Nube di gas e polveri, sede di formazione stellare."
+      }
+    ]
+  },
+  {
+    "id": "terra2",
+    "title": "Sistema solare",
+    "password": "terra2",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Sole",
+        "clue": "Stella al centro del Sistema Solare."
+      },
+      {
+        "answer": "Fascia di asteroidi",
+        "clue": "Regione compresa tra Marte e Giove popolata da numerosi corpi rocciosi."
+      },
+      {
+        "answer": "Meteora",
+        "clue": "Piccolo corpo roccioso che attraversa l’atmosfera terrestre."
+      },
+      {
+        "answer": "Otto",
+        "clue": "Numero dei pianeti nel Sistema Solare."
+      },
+      {
+        "answer": "Keplero",
+        "clue": "Formulò tre leggi fondamentali sul moto dei pianeti."
+      },
+      {
+        "answer": "Newton",
+        "clue": "Formulò la legge di gravitazione universale spiegando il moto dei corpi celesti."
+      },
+      {
+        "answer": "Afelio",
+        "clue": "Punto dell’orbita di un pianeta in cui esso si trova alla massima distanza dal Sole."
+      },
+      {
+        "answer": "Orario",
+        "clue": "Senso di rotazione del pianeta Venere."
+      },
+      {
+        "answer": "Sublimazione",
+        "clue": "Passaggio dallo stato solido a quello aeriforme."
+      },
+      {
+        "answer": "Fascia di Kuiper",
+        "clue": "Regione oltre Nettuno ricca di piccoli corpi ghiacciati e pianeti nani."
+      },
+      {
+        "answer": "Rover",
+        "clue": "Veicolo robotico progettato per muoversi sulla superficie di un corpo celeste."
+      },
+      {
+        "answer": "Plutone",
+        "clue": "Pianeta nano della fascia di Kuiper."
+      },
+      {
+        "answer": "Sonda",
+        "clue": "Veicolo spaziale senza equipaggio inviato a esplorare pianeti o altri corpi celesti."
+      },
+      {
+        "answer": "Chioma",
+        "clue": "Involucro di gas e polveri che si forma intorno al nucleo di una cometa vicino al Sole."
+      },
+      {
+        "answer": "Saturno",
+        "clue": "Il Signore degli Anelli."
+      },
+      {
+        "answer": "Gioviani",
+        "clue": "Pianeti esterni di grandi dimensioni, principalmente gassosi."
+      },
+      {
+        "answer": "Velocità",
+        "clue": "Aumenta quando il pianeta è più vicino al Sole."
+      },
+      {
+        "answer": "Meteoriti",
+        "clue": "Frammenti di corpi rocciosi che riescono a raggiungere la superficie terrestre."
+      },
+      {
+        "answer": "Fuochi",
+        "clue": "Due punti caratteristici di un’ellisse, uno dei quali è occupato dal Sole."
+      },
+      {
+        "answer": "Nana gialla",
+        "clue": "Una stella come il Sole."
+      }
+    ]
+  },
+  {
+    "id": "terra3",
+    "title": "Terra e luna",
+    "password": "terra3",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Endogene",
+        "clue": "Forze e processi che hanno origine all’interno della Terra e ne modificano la superficie."
+      },
+      {
+        "answer": "Geoide",
+        "clue": "La forma reale del nostro pianeta."
+      },
+      {
+        "answer": "Eratostene",
+        "clue": "Il primo a stimare la circonferenza terrestre."
+      },
+      {
+        "answer": "Meridiano",
+        "clue": "Semicirconferenza immaginaria che unisce i poli."
+      },
+      {
+        "answer": "Equatore",
+        "clue": "Il parallelo di riferimento."
+      },
+      {
+        "answer": "Latitudine",
+        "clue": "Distanza angolare di un punto dall’Equatore, misurata verso nord o verso sud."
+      },
+      {
+        "answer": "Longitudine",
+        "clue": "Distanza angolare di un punto dal meridiano fondamentale, misurata verso est o ovest."
+      },
+      {
+        "answer": "Campo magnetico",
+        "clue": "Orienta l’ago della bussola e devia molte particelle solari."
+      },
+      {
+        "answer": "Rotazione",
+        "clue": "Movimento della Terra attorno al proprio asse, responsabile dell’alternanza di giorno e notte."
+      },
+      {
+        "answer": "Rivoluzione",
+        "clue": "Movimento compiuto dalla Terra lungo la propria orbita intorno al Sole."
+      },
+      {
+        "answer": "Coriolis",
+        "clue": "Effetto apparente che devia i corpi in movimento sulla superficie di un pianeta in rotazione."
+      },
+      {
+        "answer": "Centrifuga",
+        "clue": "Forza apparente diretta verso l’esterno che compare in un sistema di riferimento rotante."
+      },
+      {
+        "answer": "Equinozio",
+        "clue": "Momento dell’anno in cui dì e notte hanno stessa durata."
+      },
+      {
+        "answer": "Solstizio",
+        "clue": "Momento dell’anno in cui il Sole raggiunge la massima declinazione rispetto all’Equatore."
+      },
+      {
+        "answer": "Temperata",
+        "clue": "Zona climatica compresa, in ciascun emisfero, tra un tropico e un circolo polare."
+      },
+      {
+        "answer": "Traslazione",
+        "clue": "Movimento orbitale della Luna intorno alla Terra."
+      },
+      {
+        "answer": "Luna nuova",
+        "clue": "Fase lunare in cui la Luna si trova in Posizione di congiunzione."
+      },
+      {
+        "answer": "Eclissi",
+        "clue": "Oscuramento totale o parziale di un astro dovuto all’interposizione di un altro corpo celeste."
+      },
+      {
+        "answer": "Linea dei nodi",
+        "clue": "Punto dell’orbita in cui si assiste ad un allineamento perfetto tra Luna e Terra."
+      },
+      {
+        "answer": "Sidereo",
+        "clue": "Lo è il giorno che dura 23 ore 56 minuti e 4 secondi."
+      }
+    ]
+  },
+  {
+    "id": "terra4",
+    "title": "Atmosfera",
+    "password": "terra4",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Atmosfera",
+        "clue": "Involucro di gas che circonda la Terra ed è trattenuto dalla gravità."
+      },
+      {
+        "answer": "Troposfera",
+        "clue": "Strato più basso dell’atmosfera, nel quale avvengono quasi tutti i fenomeni meteorologici."
+      },
+      {
+        "answer": "Stratosfera",
+        "clue": "Strato atmosferico che contiene gran parte dell’ozono."
+      },
+      {
+        "answer": "Mesosfera",
+        "clue": "Strato atmosferico nel quale brucia gran parte dei meteoroidi in ingresso."
+      },
+      {
+        "answer": "Punto di rugiada",
+        "clue": "Temperatura alla quale l’aria diventa satura di vapore acqueo e inizia la condensazione."
+      },
+      {
+        "answer": "Esosfera",
+        "clue": "Regione più esterna dell’atmosfera, che sfuma gradualmente nello spazio."
+      },
+      {
+        "answer": "Termoclastismo",
+        "clue": "Disgregazione delle rocce causata da ripetute variazioni di temperatura."
+      },
+      {
+        "answer": "Pressione atmosferica",
+        "clue": "Forza esercitata dall’aria su una superficie per effetto del suo peso."
+      },
+      {
+        "answer": "Umidità",
+        "clue": "Quantità di vapore acqueo presente nell’aria."
+      },
+      {
+        "answer": "Condensazione",
+        "clue": "Passaggio dell’acqua dallo stato aeriforme a quello liquido."
+      },
+      {
+        "answer": "Precipitazione",
+        "clue": "Caduta al suolo di acqua atmosferica in forma liquida o solida."
+      },
+      {
+        "answer": "Vento",
+        "clue": "Movimento dell’aria da zone di alta pressione verso zone di pressione più bassa."
+      },
+      {
+        "answer": "Brezza",
+        "clue": "Vento periodico locale che cambia direzione tra giorno e notte, tipico delle coste."
+      },
+      {
+        "answer": "Monsone",
+        "clue": "Vento periodico stagionale che cambia direzione tra estate e inverno."
+      },
+      {
+        "answer": "Alisei",
+        "clue": "Venti costanti che soffiano dalle alte pressioni subtropicali verso la zona equatoriale."
+      },
+      {
+        "answer": "Effetto serra",
+        "clue": "Fenomeno con cui alcuni gas atmosferici trattengono parte della radiazione infrarossa emessa dalla Terra."
+      },
+      {
+        "answer": "Inquinamento atmosferico",
+        "clue": "Alterazione della composizione dell’aria dovuta alla presenza di sostanze nocive o in eccesso."
+      },
+      {
+        "answer": "Crioclastismo",
+        "clue": "Frantumazione delle rocce dovuta al congelamento e all’espansione dell’acqua nelle fessure."
+      },
+      {
+        "answer": "Escursione termica",
+        "clue": "Differenza tra la temperatura massima e quella minima registrate in un determinato intervallo di tempo."
+      },
+      {
+        "answer": "Carsismo",
+        "clue": "Insieme di forme e processi dovuti soprattutto alla dissoluzione di rocce calcaree da parte dell’acqua."
+      },
+      {
+        "answer": "Corrasione",
+        "clue": "Erosione delle rocce provocata dall’urto e dallo sfregamento di particelle trasportate dal vento."
+      },
+      {
+        "answer": "Isobare",
+        "clue": "Linee che uniscono, su una carta meteorologica, punti con uguale pressione atmosferica."
+      }
+    ]
+  },
+  {
+    "id": "terra5",
+    "title": "Idrosfera",
+    "password": "terra5",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Idrosfera",
+        "clue": "Insieme di tutte le acque presenti sulla Terra, allo stato liquido, solido e aeriforme."
+      },
+      {
+        "answer": "Salinità",
+        "clue": "Quantità di sali disciolti in una determinata massa di acqua marina."
+      },
+      {
+        "answer": "Densità",
+        "clue": "Rapporto tra massa e volume dell’acqua, influenzato anche da temperatura e salinità."
+      },
+      {
+        "answer": "Moto ondoso",
+        "clue": "Movimento oscillatorio della superficie marina generato soprattutto dal vento."
+      },
+      {
+        "answer": "Oscillazione",
+        "clue": "Onda che trasporta energia senza spostare stabilmente la massa d’acqua."
+      },
+      {
+        "answer": "Marea",
+        "clue": "Oscillazione periodica del livello del mare dovuta principalmente all’attrazione di Luna e Sole."
+      },
+      {
+        "answer": "Cloruro di sodio",
+        "clue": "Il sale più abbondante in mari e oceani."
+      },
+      {
+        "answer": "Frangente",
+        "clue": "Onda che, avvicinandosi alla costa, diventa instabile e si rompe facendo ricadere in avanti la cresta."
+      },
+      {
+        "answer": "Corrente marina",
+        "clue": "Movimento persistente di grandi masse d’acqua oceanica lungo direzioni definite."
+      },
+      {
+        "answer": "Fiume",
+        "clue": "Corso d’acqua naturale che scorre in un alveo e confluisce in un altro corso d’acqua, lago o mare."
+      },
+      {
+        "answer": "Bacino idrografico",
+        "clue": "Territorio nel quale tutte le acque superficiali convergono verso lo stesso corso d’acqua principale."
+      },
+      {
+        "answer": "Portata",
+        "clue": "Volume d’acqua che attraversa una sezione di un fiume nell’unità di tempo."
+      },
+      {
+        "answer": "Foce",
+        "clue": "Punto terminale di un corso d’acqua, dove esso confluisce in un lago, mare o altro fiume."
+      },
+      {
+        "answer": "Falesia",
+        "clue": "Costa alta e rocciosa sulla quale l’abrasione marina è molto intensa."
+      },
+      {
+        "answer": "Artesiana",
+        "clue": "Tipologia di falda imprigionata tra due strati impermeabili."
+      },
+      {
+        "answer": "Lago",
+        "clue": "Massa d’acqua continentale raccolta in una depressione del terreno."
+      },
+      {
+        "answer": "Ghiacciaio",
+        "clue": "Grande massa di ghiaccio persistente che si muove lentamente per effetto della gravità."
+      },
+      {
+        "answer": "Erosione",
+        "clue": "Asportazione di materiale dalla superficie terrestre da parte di acqua, ghiaccio, vento o altri agenti."
+      },
+      {
+        "answer": "Trasporto",
+        "clue": "Spostamento dei detriti erosi da parte di un agente naturale come acqua, ghiaccio o vento."
+      },
+      {
+        "answer": "Sedimentazione",
+        "clue": "Deposizione dei materiali trasportati quando diminuisce l’energia dell’agente che li muove."
+      },
+      {
+        "answer": "Ablazione",
+        "clue": "Zona del ghiacciaio in cui la fusione prevale sull’accumulo."
+      },
+      {
+        "answer": "Morena",
+        "clue": "Tipo di deposito prodotto dall’erosione glaciale."
+      },
+      {
+        "answer": "Esarazione",
+        "clue": "Abrasione delle rocce da parte del ghiaccio."
+      },
+      {
+        "answer": "Infiltrazione",
+        "clue": "Processo attraverso il quale l’acqua meteorica passa nel terreno."
+      }
+    ]
+  },
+  {
+    "id": "terra6",
+    "title": "Minerali e rocce",
+    "password": "terra6",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Minerale",
+        "clue": "Solido naturale, generalmente inorganico, con composizione chimica e struttura cristallina definite."
+      },
+      {
+        "answer": "Cristallo",
+        "clue": "Solido i cui atomi sono disposti secondo un ordine geometrico regolare."
+      },
+      {
+        "answer": "Reticolo cristallino",
+        "clue": "Disposizione ordinata e periodica degli atomi che costituiscono un cristallo."
+      },
+      {
+        "answer": "Durezza",
+        "clue": "Resistenza di un minerale a essere scalfito."
+      },
+      {
+        "answer": "Scala di Mohs",
+        "clue": "Scala da 1 a 10 usata per confrontare la durezza relativa dei minerali."
+      },
+      {
+        "answer": "Sfaldatura",
+        "clue": "Tendenza di un minerale a rompersi lungo superfici piane e regolari."
+      },
+      {
+        "answer": "Lucentezza",
+        "clue": "Modo in cui la superficie di un minerale riflette la luce."
+      },
+      {
+        "answer": "Densità",
+        "clue": "Rapporto tra la massa di un materiale e il volume che occupa."
+      },
+      {
+        "answer": "Roccia magmatica",
+        "clue": "Roccia formata dalla solidificazione e cristallizzazione di un magma."
+      },
+      {
+        "answer": "Intrusiva",
+        "clue": "Roccia magmatica solidificata lentamente in profondità, con cristalli generalmente ben visibili."
+      },
+      {
+        "answer": "Effusiva",
+        "clue": "Roccia magmatica solidificata rapidamente in superficie o vicino a essa."
+      },
+      {
+        "answer": "Sedimentaria",
+        "clue": "Roccia formata dall’accumulo, compattazione e cementazione di sedimenti o da precipitazione chimica."
+      },
+      {
+        "answer": "Metamorfica",
+        "clue": "Roccia trasformata allo stato solido da variazioni di pressione, temperatura o fluidi."
+      },
+      {
+        "answer": "Ciclo litogenetico",
+        "clue": "Insieme delle trasformazioni che collegano rocce magmatiche, sedimentarie e metamorfiche."
+      },
+      {
+        "answer": "Stratificazione",
+        "clue": "Disposizione dei sedimenti e delle rocce sedimentarie in strati sovrapposti."
+      },
+      {
+        "answer": "Fossile guida",
+        "clue": "Resti di organismo diffuso e di breve durata geologica usati per correlare e datare gli strati."
+      },
+      {
+        "answer": "Sovrapposizione",
+        "clue": "Principi secondo cui, in una successione non deformata, gli strati inferiori sono più antichi di quelli superiori."
+      },
+      {
+        "answer": "Datazione radiometrica",
+        "clue": "Metodo per determinare l’età assoluta delle rocce attraverso il decadimento di isotopi radioattivi."
+      },
+      {
+        "answer": "Piega",
+        "clue": "Deformazione duttile degli strati rocciosi che li incurva senza romperli."
+      },
+      {
+        "answer": "Faglia",
+        "clue": "Frattura della crosta lungo la quale si verifica uno spostamento relativo dei blocchi rocciosi."
+      }
+    ]
+  },
+  {
+    "id": "terra7",
+    "title": "Vulcani e terremoti",
+    "password": "terra7",
+    "subject": "Scienze della Terra",
+    "reviewMap": null,
+    "words": [
+      {
+        "answer": "Vulcano",
+        "clue": "Struttura geologica attraverso cui magma, gas e materiali solidi raggiungono la superficie."
+      },
+      {
+        "answer": "Camera magmatica",
+        "clue": "Serbatoio sotterraneo nel quale può accumularsi il magma prima di un’eruzione."
+      },
+      {
+        "answer": "Camino",
+        "clue": "Condotto attraverso cui il magma risale verso la superficie."
+      },
+      {
+        "answer": "Cratere",
+        "clue": "Depressione generalmente circolare che circonda la principale bocca eruttiva di un vulcano."
+      },
+      {
+        "answer": "Magma",
+        "clue": "Miscela di materiale roccioso fuso, cristalli e gas presente all’interno della Terra."
+      },
+      {
+        "answer": "Lava",
+        "clue": "Magma che ha raggiunto la superficie e ha perso gran parte dei gas disciolti."
+      },
+      {
+        "answer": "Magma acido",
+        "clue": "Magma ricco in silice, molto viscoso e spesso associato a eruzioni esplosive."
+      },
+      {
+        "answer": "Magma basico",
+        "clue": "Magma povero in silice, relativamente fluido e spesso associato a eruzioni effusive."
+      },
+      {
+        "answer": "Effusiva",
+        "clue": "Eruzione vulcanica caratterizzata soprattutto dall’emissione tranquilla di colate laviche."
+      },
+      {
+        "answer": "Esplosiva",
+        "clue": "Eruzione vulcanica violenta con rapida liberazione di gas, ceneri e frammenti."
+      },
+      {
+        "answer": "Vulcano a scudo",
+        "clue": "Edificio vulcanico largo e con fianchi poco inclinati, costruito da lave molto fluide."
+      },
+      {
+        "answer": "Stratovulcano",
+        "clue": "Edificio vulcanico conico formato dall’alternanza di colate laviche e materiali piroclastici."
+      },
+      {
+        "answer": "Caldera",
+        "clue": "Ampia depressione vulcanica formatasi spesso per il collasso della parte sommitale dell’edificio."
+      },
+      {
+        "answer": "Terremoto",
+        "clue": "Vibrazione improvvisa del terreno causata dal rapido rilascio di energia nella crosta terrestre."
+      },
+      {
+        "answer": "Ipocentro",
+        "clue": "Punto in profondità nel quale ha origine la rottura che genera un terremoto."
+      },
+      {
+        "answer": "Epicentro",
+        "clue": "Punto della superficie terrestre situato verticalmente sopra l’ipocentro."
+      },
+      {
+        "answer": "Onde P",
+        "clue": "Onde sismiche longitudinali, le più veloci, capaci di attraversare solidi e fluidi."
+      },
+      {
+        "answer": "Onde S",
+        "clue": "Onde sismiche trasversali che si propagano nei solidi ma non nei fluidi."
+      },
+      {
+        "answer": "Magnitudo",
+        "clue": "Misura strumentale dell’energia liberata da un terremoto, ricavata dalle onde sismiche."
+      },
+      {
+        "answer": "Intensità",
+        "clue": "Valutazione degli effetti e dei danni prodotti da un terremoto in una determinata località."
+      }
+    ]
+  }
+];
+</script><script>/* Generatore deterministico. Ogni parola è inserita, incrociata e numerata. */
+(function(root){
+const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z]/g,'');
+function generate(words){
+ let seed=137;const random=()=>{seed=(seed*16807)%2147483647;return(seed-1)/2147483646};let best=null;
+ for(let trial=0;trial<100;trial++){
+  const grid=new Map(),placed=[];const key=(r,c)=>r+','+c;
+  const get=(r,c)=>grid.get(key(r,c));
+  const put=(w,r,c,d)=>{const p={...w,r,c,d};placed.push(p);for(let i=0;i<w.text.length;i++){let rr=r+(d?i:0),cc=c+(d?0:i),v=get(rr,cc);if(v)v.dirs.push(d);else grid.set(key(rr,cc),{letter:w.text[i],dirs:[d]});}};
+  let rest=words.map((w,id)=>({...w,id,text:normalize(w.answer),order:random()})).sort((a,b)=>trial===0?b.text.length-a.text.length:a.order-b.order);
+  const first=rest.shift();put(first,0,0,0);
+  for(let pass=0;pass<words.length&&rest.length;pass++){
+   let next=[];
+   for(const w of rest){let candidates=[];
+    for(const [k,v] of grid){const [rr,cc]=k.split(',').map(Number);for(let i=0;i<w.text.length;i++)if(w.text[i]===v.letter)for(let d=0;d<2;d++){
+     if(v.dirs.includes(d))continue;const r=rr-(d?i:0),c=cc-(d?0:i),len=w.text.length;
+     if(get(r-(d?1:0),c-(d?0:1))||get(r+(d?len:0),c+(d?0:len)))continue;
+     let valid=true,hits=0;
+     for(let j=0;j<len;j++){const a=r+(d?j:0),b=c+(d?0:j),cell=get(a,b);if(cell){if(cell.letter!==w.text[j]||cell.dirs.includes(d)){valid=false;break}hits++;}else if(get(a+(d?0:1),b+(d?1:0))||get(a-(d?0:1),b-(d?1:0))){valid=false;break}}
+     if(valid){let coords=[...grid.keys()].map(k=>k.split(',').map(Number));let rs=coords.map(x=>x[0]).concat(r,r+(d?len-1:0)),cs=coords.map(x=>x[1]).concat(c,c+(d?0:len-1));let h=Math.max(...rs)-Math.min(...rs)+1,ww=Math.max(...cs)-Math.min(...cs)+1;candidates.push({r,c,d,score:h*ww+Math.abs(h-ww)*12-hits*20+random()*5})}
+    }}
+    if(candidates.length){candidates.sort((a,b)=>a.score-b.score);const p=candidates[0];put(w,p.r,p.c,p.d)}else next.push(w);
+   }
+   if(next.length===rest.length)break;rest=next;
+  }
+  const coords=[...grid.keys()].map(k=>k.split(',').map(Number));const minR=Math.min(...coords.map(x=>x[0])),minC=Math.min(...coords.map(x=>x[1]));const height=Math.max(...coords.map(x=>x[0]))-minR+1,width=Math.max(...coords.map(x=>x[1]))-minC+1;
+  if(!best||placed.length>best.words.length||(placed.length===best.words.length&&height*width<best.height*best.width)){
+   const result=placed.map(p=>({...p,r:p.r-minR,c:p.c-minC})).sort((a,b)=>a.r-b.r||a.c-b.c);let n=0,last='';for(const p of result){const k=key(p.r,p.c);if(k!==last)n++;p.number=n;last=k}best={words:result,height,width};
+  }
+  if(best.words.length===words.length&&trial>20)break;
+ }
+ if(best.words.length!==words.length)throw Error('Non tutte le parole possono essere incrociate: controlla il modulo.');
+ return best;
+}
+root.Crossword={normalize,generate};
+})(typeof window==='undefined'?globalThis:window);
+</script><script>/* Interfaccia del gioco. I contenuti didattici si modificano in moduli.js. */
+const app=document.getElementById('app'),dialog=document.getElementById('password-dialog');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const state={module:null,puzzle:null,selected:0,letters:{},anchor:null,entryBaseline:[],completed:new Set(),cache:new Map(),sessions:new Map()};
+const key=(r,c)=>r+','+c;
+function home(){leaveGame();app.innerHTML=`<section class="home"><div><span class="eyebrow">SCIENZE DELLA TERRA</span><h1>Il pianeta,<br>una parola<br>alla volta.</h1><p>Incrocia le conoscenze. Esplora i moduli del tuo programma e completa ogni cruciverba.</p><button class="primary" id="start">Esplora i livelli →</button><div class="home-meta"><div><strong>${MODULI.length}</strong>moduli da esplorare</div><div><strong>${MODULI.reduce((n,m)=>n+m.words.length,0)}</strong>parole da scoprire</div></div></div><div class="specimen" aria-hidden="true"><span class="eyebrow">APPUNTI DI ESPLORAZIONE / 01</span><div class="demo-grid">${Array.from({length:56},(_,i)=>{const r=Math.floor(i/8),c=i%8;let t='';if(r===2&&c>=1&&c<=5)t='TERRA'[c-1];if(c===2&&r>=1&&r<=4)t='GEOI'[r-1];if(r===4&&c>=1&&c<=5)t='PIEGA'[c-1];return `<span class="${t?'letter':''} ${r===2&&c===2?'accent':''}">${t}</span>`}).join('')}</div><footer><span>Osserva. Collega. Scopri.</span><span>01 — 07</span></footer></div></section><p class="bottom-note">Un modulo, un cruciverba. Scegli da dove cominciare.</p>`;document.getElementById('start').onclick=levels;}
+function levels(){leaveGame();app.innerHTML=`<div class="section-head"><div><span class="eyebrow">IL TUO PERCORSO</span><h1>Scegli il tuo modulo</h1><p>Scegli un modulo e inserisci la password per iniziare.</p></div><span class="count">${state.completed.size} / ${MODULI.length} completati</span></div><section class="cards">${MODULI.map((m,i)=>`<button class="card" data-module="${i}"><span class="card-top"><span>MODULO ${String(i+1).padStart(2,'0')}</span><span>${state.completed.has(m.id)?'COMPLETATO ✓':'CON PASSWORD'}</span></span><h3>${esc(m.title)}</h3><span class="card-bottom"><span>${m.words.length} parole · ${esc(m.subject)}</span><span class="card-arrow" aria-hidden="true">↗</span></span></button>`).join('')}</section><p class="bottom-note">Scrivi senza spazi e accenti. I progressi restano disponibili finché questa pagina è aperta.</p>`;app.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>askPassword(Number(b.dataset.module)));window.scrollTo(0,0);}
+let pending=0;
+function askPassword(i){pending=i;document.getElementById('password-title').textContent=MODULI[i].title;document.getElementById('password').value='';document.getElementById('password-error').textContent='';dialog.showModal();document.getElementById('password').focus();}
+document.getElementById('cancel-password').onclick=()=>dialog.close();
+document.getElementById('password-form').onsubmit=e=>{e.preventDefault();if(document.getElementById('password').value!==MODULI[pending].password){document.getElementById('password-error').textContent='Password non corretta. Riprova.';return}dialog.close();startModule(pending)};
+document.getElementById('home-link').onclick=e=>{e.preventDefault();home()};document.getElementById('levels-link').onclick=levels;
+function startModule(i){state.module=MODULI[i];try{if(!state.cache.has(state.module.id))state.cache.set(state.module.id,Crossword.generate(state.module.words));state.puzzle=state.cache.get(state.module.id);}catch(error){app.innerHTML=`<h1>Modulo da controllare</h1><p>${esc(error.message)}</p><button id="back-error">Torna ai moduli</button>`;document.getElementById('back-error').onclick=levels;return}state.letters=state.sessions.get(state.module.id)||{};state.sessions.set(state.module.id,state.letters);state.selected=0;state.anchor=null;renderGame();window.scrollTo(0,0)}
+function cellsOf(w){return Array.from(w.text,(_,i)=>key(w.r+(w.d?i:0),w.c+(w.d?0:i)))}
+// Conserva gli incroci non ancora raggiunti dalla digitazione.
+// Una lettera digitata esplicitamente può correggere anche un incrocio errato.
+function applyWordInput(word,value,baseline){
+ cellsOf(word).forEach((k,i)=>{
+  const letter=value[i]||baseline[i];
+  if(letter)state.letters[k]=letter;else delete state.letters[k];
+ });
+}
+function captureCrossings(word){
+ const others=new Set(state.puzzle.words.filter(w=>w.id!==word.id).flatMap(cellsOf));
+ return cellsOf(word).map(k=>others.has(k)?state.letters[k]||'':'');
+}
+function isCorrect(w){return cellsOf(w).map(k=>state.letters[k]||'').join('')===w.text}
+let boardObserver;
+let completionTimer;
+const successTimers=new Set();
+function clearSuccessEffects(){
+ clearTimeout(completionTimer);
+ successTimers.forEach(clearTimeout);successTimers.clear();
+ app.querySelectorAll('.celebrating').forEach(cell=>cell.classList.remove('celebrating'));
+}
+// Piccola onda di conferma: le lettere crescono e tornano alla dimensione normale.
+function celebrateWords(words){
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const seen=new Set();let duration=0;
+ for(const word of words){
+  cellsOf(word).forEach((k,i)=>{
+   if(seen.has(k))return;seen.add(k);
+   const cell=app.querySelector(`.cell[data-key="${k}"]`);if(!cell)return;
+   const delay=reduced?0:i*38;
+   cell.style.setProperty('--success-delay',delay+'ms');
+   cell.classList.remove('celebrating');void cell.offsetWidth;
+   cell.classList.add('celebrating');duration=Math.max(duration,delay+(reduced?220:620));
+  });
+ }
+ if(words.length){
+  const timer=setTimeout(()=>{seen.forEach(k=>app.querySelector(`.cell[data-key="${k}"]`)?.classList.remove('celebrating'));successTimers.delete(timer)},duration+30);
+  successTimers.add(timer);
+ }
+ clearTimeout(completionTimer);
+ if(state.puzzle.words.every(isCorrect)){
+  const puzzle=state.puzzle;
+  completionTimer=setTimeout(()=>{if(state.puzzle===puzzle&&document.getElementById('board')&&puzzle.words.every(isCorrect))complete()},Math.max(300,duration+220));
+ }
+}
+
+function leaveGame(){clearSuccessEffects();boardObserver?.disconnect();document.body.classList.remove('playing');app.classList.remove('game-screen');}
+function fitBoard(){
+ const stage=document.getElementById('board-stage'),board=document.getElementById('board');
+ if(!stage||!board||!state.puzzle)return;
+ const {width,height}=state.puzzle;
+ const cell=Math.max(1,Math.min((stage.clientWidth-width-1)/width,(stage.clientHeight-height-1)/height));
+ board.style.width=(cell*width+width+1)+'px';
+ board.style.height=(cell*height+height+1)+'px';
+ board.style.setProperty('--cell-font',Math.min(24,cell*.57)+'px');
+ board.style.setProperty('--number-font',Math.min(11,cell*.25)+'px');
+}
+function renderGame(){
+ leaveGame();document.body.classList.add('playing');app.classList.add('game-screen');
+ const {module:m,puzzle:p}=state;
+ app.innerHTML=`<div class="game-head"><div><span class="eyebrow">MODULO ${String(MODULI.indexOf(m)+1).padStart(2,'0')} / ${esc(m.subject).toUpperCase()}</span><h1>${esc(m.title)}</h1></div><button class="quiet" id="back">← Tutti i moduli</button></div>
+ <div class="game-status"><span id="touch-help">Tocca una casella per leggere la definizione e scrivere la parola.</span><span class="progress-label" id="progress-label"></span></div>
+ <div class="progress"><span id="progress-bar"></span></div>
+ <div class="play-workspace" id="play-workspace"><section id="board-stage" aria-label="Griglia del cruciverba"><div id="board" class="board"></div></section>
+ <section class="word-panel" id="word-panel" aria-labelledby="clue-title" hidden>
+ <div class="word-panel-top"><span class="entry-meta" id="entry-meta"></span><button class="quiet" id="close-word" aria-label="Chiudi la definizione">Chiudi ×</button></div>
+ <div class="direction-options" id="directions" aria-label="Scegli la direzione"></div>
+ <h2 id="clue-title"></h2><label for="answer">La tua risposta <span id="length"></span></label>
+ <div class="entry-row"><input id="answer" type="text" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" aria-describedby="entry-meta clue-title" placeholder="Scrivi la parola intera"></div>
+ <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+ </section></div>`;
+ const board=document.getElementById('board');board.style.gridTemplateColumns=`repeat(${p.width},minmax(0,1fr))`;board.style.gridTemplateRows=`repeat(${p.height},minmax(0,1fr))`;
+ const occupied={},starts={};p.words.forEach(w=>{cellsOf(w).forEach((k,i)=>occupied[k]=w.text[i]);starts[key(w.r,w.c)]=w.number});
+ for(let r=0;r<p.height;r++)for(let c=0;c<p.width;c++){
+  const k=key(r,c),b=document.createElement(occupied[k]?'button':'span');
+  if(occupied[k]){b.className='cell';b.dataset.key=k;b.innerHTML=`${starts[k]?`<small>${starts[k]}</small>`:''}<span></span>`;b.onclick=()=>{
+   const choices=p.words.map((w,i)=>({w,i})).filter(x=>cellsOf(x.w).includes(k));
+   const same=state.anchor===k?choices.findIndex(x=>x.i===state.selected):-1;
+   state.anchor=k;select(choices[(same+1)%choices.length].i);
+  };}else b.className='blank';board.appendChild(b);
+ }
+ document.getElementById('back').onclick=levels;
+ document.getElementById('close-word').onclick=closeWord;
+ document.getElementById('answer').oninput=e=>{
+  const previouslyCorrect=new Set(p.words.filter(isCorrect).map(w=>w.id));clearSuccessEffects();
+  const w=p.words[state.selected],value=Crossword.normalize(e.target.value).slice(0,w.text.length);e.target.value=value;
+  applyWordInput(w,value,state.entryBaseline);
+  document.getElementById('feedback').textContent='';updateBoard();
+  if(cellsOf(w).every(k=>Boolean(state.letters[k])))check();
+  celebrateWords(p.words.filter(word=>isCorrect(word)&&!previouslyCorrect.has(word.id)));
+ };
+ boardObserver=new ResizeObserver(fitBoard);boardObserver.observe(document.getElementById('board-stage'));
+ updateBoard();fitBoard();
+}
+function closeWord(){
+ const panel=document.getElementById('word-panel');panel.hidden=true;
+ document.getElementById('play-workspace').classList.remove('editing');
+ const target=app.querySelector(`.cell[data-key="${state.anchor||cellsOf(state.puzzle.words[state.selected])[0]}"]`);
+ target?.focus({preventScroll:true});updateBoard();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('word-panel')&&!document.getElementById('word-panel').hidden)closeWord()});
+function select(i){document.getElementById('word-panel').hidden=false;document.getElementById('play-workspace').classList.add('editing');state.selected=i;const w=state.puzzle.words[i];document.getElementById('entry-meta').textContent=`${w.number} ${w.d?'VERTICALE':'ORIZZONTALE'}`;document.getElementById('clue-title').textContent=w.clue;document.getElementById('length').textContent=`(${w.text.length} lettere)`;const input=document.getElementById('answer');input.maxLength=w.text.length+10;const letters=cellsOf(w).map(k=>state.letters[k]||'');state.entryBaseline=captureCrossings(w);input.value=letters.every(Boolean)?letters.join(''):'';input.placeholder='Scrivi la parola intera';document.getElementById('feedback').textContent='';const choices=state.anchor?state.puzzle.words.map((w,i)=>({w,i})).filter(x=>cellsOf(x.w).includes(state.anchor)):[];document.getElementById('directions').innerHTML=choices.length>1?choices.map(x=>`<button class="quiet" data-direction="${x.i}" aria-pressed="${x.i===i}">${x.w.number} ${x.w.d?'↓ Verticale':'→ Orizzontale'}</button>`).join(''):'';app.querySelectorAll('[data-direction]').forEach(b=>b.onclick=()=>select(Number(b.dataset.direction)));updateBoard()}
+function updateBoard(){const correctCells=new Set(state.puzzle.words.filter(isCorrect).flatMap(cellsOf));const w=state.puzzle.words[state.selected],active=document.getElementById('word-panel').hidden?[]:cellsOf(w);app.querySelectorAll('.cell').forEach(b=>{const k=b.dataset.key;b.querySelector('span').textContent=state.letters[k]||'';b.classList.toggle('active',active.includes(k));b.classList.toggle('cursor',k===active[0]);b.classList.remove('wrong');b.classList.toggle('correct',correctCells.has(k));b.setAttribute('aria-label',`Riga ${Number(k.split(',')[0])+1}, colonna ${Number(k.split(',')[1])+1}: ${state.letters[k]||'vuota'}`)});const n=state.puzzle.words.filter(isCorrect).length;document.getElementById('progress-bar').style.width=n/state.puzzle.words.length*100+'%';document.getElementById('progress-label').textContent=`${n} di ${state.puzzle.words.length} parole corrette`}
+// Verifica automatica: chiamata soltanto quando tutte le caselle sono piene.
+function check(){
+ const w=state.puzzle.words[state.selected];
+ if(!cellsOf(w).every(k=>Boolean(state.letters[k])))return;
+ if(isCorrect(w)){
+  document.getElementById('feedback').textContent='✓ Parola corretta!';
+ }else{
+  cellsOf(w).forEach((k,i)=>{
+   if(state.letters[k]!==w.text[i])app.querySelector(`.cell[data-key="${k}"]`).classList.add('wrong');
+  });
+  document.getElementById('feedback').textContent='Controlla le lettere segnate in rosso e riprova.';
+ }
+}
+function complete(){leaveGame();const m=state.module;state.completed.add(m.id);app.innerHTML=`<section class="completion"><div class="seal" aria-hidden="true">✓</div><span class="eyebrow">${esc(m.title)}</span><h1>Livello completato</h1><p>Hai trovato tutte le ${m.words.length} parole del modulo.<br>Ogni incrocio è una conoscenza in più.</p>${m.reviewMap?`<div class="map-placeholder"><h2>Mappa di ripasso</h2><button class="map-preview" id="open-map" aria-label="Apri e ingrandisci la mappa di ${esc(m.title)}"><img src="${esc(m.reviewMap)}" alt="Mappa di ripasso: ${esc(m.title)}"><span>Tocca per ingrandire ⤢</span></button></div>`:`<div class="map-placeholder"><strong>Mappa di ripasso</strong><p>Questo spazio accoglierà la mappa dell’argomento nei prossimi aggiornamenti.</p></div>`}<div class="actions"><button class="primary" id="finish">Torna ai livelli →</button><button class="quiet" id="replay">Rigioca il modulo</button></div></section>`;if(m.reviewMap)document.getElementById('open-map').onclick=()=>openMap(m);document.getElementById('finish').onclick=levels;document.getElementById('replay').onclick=()=>{state.sessions.delete(m.id);startModule(MODULI.indexOf(m))};window.scrollTo(0,0)}
+// Mappa a schermo intero: zoom a due dita, trascinamento e comandi accessibili.
+function openMap(module){
+ const viewer=document.createElement('dialog');
+ viewer.className='map-viewer';viewer.setAttribute('aria-labelledby','map-title');
+ viewer.innerHTML=`<div class="map-viewer-head"><h2 id="map-title">${esc(module.title)} · Mappa di ripasso</h2><button class="quiet" id="close-map">Chiudi ×</button></div>
+ <div class="map-controls"><button id="map-minus" aria-label="Riduci mappa" disabled>−</button><output id="map-scale" aria-live="polite">100%</output><button id="map-plus" aria-label="Ingrandisci mappa" disabled>+</button><button id="map-reset" disabled>Adatta</button></div>
+ <p class="map-instructions">Allarga due dita per ingrandire. Trascina per spostarti.</p>
+ <div class="map-stage" id="map-stage" tabindex="0" aria-label="Mappa interattiva: usa più, meno e le frecce per esplorarla"><img id="map-image" draggable="false" alt="Mappa concettuale: ${esc(module.title)}"><p class="map-load" id="map-load" role="status">Caricamento della mappa…</p></div>`;
+ document.body.appendChild(viewer);
+ const get=id=>viewer.querySelector('#'+id);
+ const stage=get('map-stage'),img=get('map-image'),status=get('map-load');
+ const controls=[get('map-minus'),get('map-plus'),get('map-reset')];
+ const pointers=new Map();let gesture=null,scale=1,x=0,y=0,baseW=0,baseH=0,ready=false;
+ const previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+ function render(){
+  const w=stage.clientWidth,h=stage.clientHeight;
+  const sw=baseW*scale,sh=baseH*scale;
+  x=sw<=w?(w-sw)/2:Math.max(w-sw,Math.min(0,x));
+  y=sh<=h?(h-sh)/2:Math.max(h-sh,Math.min(0,y));
+  img.style.transform=`translate(${x}px,${y}px) scale(${scale})`;
+  get('map-scale').textContent=Math.round(scale*100)+'%';
+  get('map-minus').disabled=scale<=1;get('map-plus').disabled=scale>=6;
+ }
+ function fit(){
+  if(!ready||!stage.clientWidth||!stage.clientHeight)return;
+  const ratio=Math.min(stage.clientWidth/img.naturalWidth,stage.clientHeight/img.naturalHeight);
+  baseW=img.naturalWidth*ratio;baseH=img.naturalHeight*ratio;
+  img.style.width=baseW+'px';img.style.height=baseH+'px';
+  scale=1;x=0;y=0;pointers.clear();gesture=null;render();
+ }
+ function zoom(next,cx=stage.clientWidth/2,cy=stage.clientHeight/2){
+  if(!ready)return;
+  next=Math.max(1,Math.min(6,next));
+  x=cx-(cx-x)*next/scale;y=cy-(cy-y)*next/scale;scale=next;render();
+ }
+ function position(e){const r=stage.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}
+ function beginGesture(){
+  const list=[...pointers.values()];
+  if(!list.length){gesture=null;return}
+  if(list.length===1){gesture={count:1,start:list[0],x,y};return}
+  const [a,b]=list;gesture={count:2,cx:(a.x+b.x)/2,cy:(a.y+b.y)/2,distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y)),scale,x,y};
+ }
+ stage.onpointerdown=e=>{
+  if(!ready||e.button!==0)return;
+  e.preventDefault();stage.focus({preventScroll:true});stage.setPointerCapture(e.pointerId);
+  pointers.set(e.pointerId,position(e));beginGesture();
+ };
+ stage.onpointermove=e=>{
+  if(!pointers.has(e.pointerId)||!gesture)return;
+  pointers.set(e.pointerId,position(e));const list=[...pointers.values()];
+  if(list.length===1&&gesture.count===1){x=gesture.x+list[0].x-gesture.start.x;y=gesture.y+list[0].y-gesture.start.y;render();return}
+  if(list.length>=2&&gesture.count===2){
+   const [a,b]=list;const next=Math.max(1,Math.min(6,gesture.scale*Math.hypot(a.x-b.x,a.y-b.y)/gesture.distance));
+   x=(a.x+b.x)/2-(gesture.cx-gesture.x)*next/gesture.scale;
+   y=(a.y+b.y)/2-(gesture.cy-gesture.y)*next/gesture.scale;scale=next;render();
+  }
+ };
+ const release=e=>{if(pointers.delete(e.pointerId))beginGesture()};
+ stage.onpointerup=release;stage.onpointercancel=release;stage.onlostpointercapture=release;
+ stage.addEventListener('wheel',e=>{if(!ready)return;e.preventDefault();const p=position(e);zoom(scale*Math.exp(-e.deltaY*.002),p.x,p.y)},{passive:false});
+ stage.onkeydown=e=>{
+  if(!ready)return;
+  if(['+','=','-','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','0'].includes(e.key))e.preventDefault();
+  if(e.key==='+'||e.key==='=')zoom(scale*1.3);else if(e.key==='-')zoom(scale/1.3);else if(e.key==='0')fit();
+  else if(e.key.startsWith('Arrow')){if(e.key==='ArrowLeft')x+=45;if(e.key==='ArrowRight')x-=45;if(e.key==='ArrowUp')y+=45;if(e.key==='ArrowDown')y-=45;render()}
+ };
+ get('map-plus').onclick=()=>zoom(scale*1.3);get('map-minus').onclick=()=>zoom(scale/1.3);get('map-reset').onclick=fit;
+ get('close-map').onclick=()=>viewer.close();
+ const observer=new ResizeObserver(fit);
+ viewer.onclose=()=>{ready=false;observer.disconnect();pointers.clear();document.body.style.overflow=previousOverflow;viewer.remove()};
+ img.onload=()=>{if(!viewer.isConnected)return;ready=true;status.hidden=true;img.style.visibility='visible';controls.forEach(b=>b.disabled=false);fit()};
+ img.onerror=()=>{status.textContent='Impossibile caricare la mappa. Controlla il nome e il percorso dell’immagine.';status.hidden=false;controls.forEach(b=>b.disabled=true)};
+ viewer.showModal();observer.observe(stage);img.src=module.reviewMap;
+}
+home();
+</script></body></html>
